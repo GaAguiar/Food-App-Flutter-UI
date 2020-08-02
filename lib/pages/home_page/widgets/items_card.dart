@@ -4,6 +4,8 @@ import 'package:food_app/models/Pizza.dart';
 
 import 'dart:math';
 
+import 'package:food_app/pages/detail_page/detail_page.dart';
+
 class ItemsCard extends StatefulWidget {
   @override
   _ItemsCardState createState() => _ItemsCardState();
@@ -35,6 +37,17 @@ class _ItemsCardState extends State<ItemsCard> {
 
   Widget buildCardItem(int index) {
     return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPage(
+              index: index,
+              pizza: listPizza[index],
+            ),
+          ),
+        );
+      },
       child: Stack(
         children: [
           AspectRatio(
